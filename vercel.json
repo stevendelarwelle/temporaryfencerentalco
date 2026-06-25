@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{"type": "host", "value": "temporaryfencerentalco.com"}],
+      "destination": "https://www.temporaryfencerentalco.com/$1",
+      "permanent": true
+    }
+  ]
+}

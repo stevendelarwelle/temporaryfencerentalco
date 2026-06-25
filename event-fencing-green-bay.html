@@ -92,6 +92,70 @@
   </div>
 </section>
 
+<section class="section section-alt">
+  <div class="container">
+    <div class="contact-form-wrap">
+      <h2>Get a Free Quote</h2>
+      <p>Tell us about your project and we'll get back to you with pricing. Or call us directly at <a href="tel:9208589957">920-858-9957</a>.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name *</label>
+          <input type="text" id="name" placeholder="John Smith" required />
+        </div>
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" id="company" placeholder="Smith Construction LLC" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phone">Phone *</label>
+          <input type="tel" id="phone" placeholder="920-555-0100" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="john@example.com" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="message">Description of Project</label>
+        <textarea id="message" placeholder="Tell us your location, approximate footage needed, and how long you need the fencing..."></textarea>
+      </div>
+      <button class="form-submit" onclick="submitForm()">Send My Quote Request</button>
+      <div class="form-msg" id="form-msg"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+async function submitForm() {
+  const msg = document.getElementById("form-msg");
+  msg.className = "form-msg";
+  msg.textContent = "";
+  const name    = document.getElementById("name").value.trim();
+  const company = document.getElementById("company").value.trim();
+  const phone   = document.getElementById("phone").value.trim();
+  const email   = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
+  if (!name || !phone) { msg.className = "form-msg error"; msg.textContent = "Name and phone are required."; return; }
+  const btn = document.querySelector(".form-submit");
+  btn.disabled = true; btn.textContent = "Sending...";
+  try {
+    const res = await fetch("/api/contact", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify({name, company, phone, email, message}) });
+    const data = await res.json();
+    if (res.ok && data.success) {
+      msg.className = "form-msg success";
+      msg.textContent = "Thanks! We'll get back to you with a quote shortly. Or call us now at 920-858-9957.";
+      ["name","company","phone","email","message"].forEach(id => document.getElementById(id).value = "");
+    } else { throw new Error(data.error || "Unknown error"); }
+  } catch(e) {
+    msg.className = "form-msg error";
+    msg.textContent = "Something went wrong. Please call us at 920-858-9957.";
+  }
+  btn.disabled = false; btn.textContent = "Send My Quote Request";
+}
+</script>
+
 <div class="cta-band">
   <div class="container">
     <h2>Planning an Outdoor Event in Green Bay?</h2>

@@ -1,5 +1,3 @@
-const nodemailer = require("nodemailer");
-
 module.exports = async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -16,15 +14,10 @@ module.exports = async (req, res) => {
 
   const siteName = process.env.SITE_NAME || "Temporary Fence Rental Co";
   const siteUrl  = process.env.SITE_URL  || "https://www.temporaryfencerentalco.com";
-  const smtpUser = process.env.SMTP_USER || "stevendelarwelle@gmail.com";
-  const smtpPass = process.env.SMTP_PASS;
+  const resendKey = process.env.RESEND_API_KEY;
 
   const OWNER = "stevendelarwelle@gmail.com";
-
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: { user: smtpUser, pass: smtpPass },
-  });
+  const FROM  = process.env.RESEND_FROM || `${siteName} Leads <onboarding@resend.dev>`;
 
   const submitted = new Date().toLocaleString("en-US", {
     timeZone: "America/Chicago",
@@ -86,13 +79,24 @@ Time:     ${submitted} CT
   const subject = `🔔 New Lead — ${name} — ${siteName}`;
 
   try {
-    await transporter.sendMail({
-      from: `"${siteName} Leads" <${smtpUser}>`,
-      to: OWNER,
-      subject,
-      text: textBody,
-      html: htmlBody,
+    const resp = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${resendKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: FROM,
+        to: OWNER,
+        subject,
+        text: textBody,
+        html: htmlBody,
+      }),
     });
+    if (!resp.ok) {
+      console.error("Resend error:", resp.status, await resp.text());
+      return res.status(500).json({ error: "Failed to send. Please call us directly." });
+    }
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error("Mail error:", err.message);

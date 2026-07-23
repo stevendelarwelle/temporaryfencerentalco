@@ -6,5 +6,7 @@
       "destination": "https://www.temporaryfencerentalco.com/$1",
       "permanent": true
     }
-  ]
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
 }

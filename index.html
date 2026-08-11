@@ -25,12 +25,44 @@
 
 <section class="hero-with-image">
   <img src="images/temporary-fence-rental-green-bay-wi-delivery.jpg" alt="Temporary fence panel delivery Green Bay Wisconsin" class="hero-bg" />
-  <div class="hero-content">
-    <h1>Temporary Fence Rental in Green Bay, WI</h1>
-    <p>Starting at $3 per linear foot. Fast delivery, professional installation, and flexible rental terms for construction sites and events across Green Bay, Appleton, and the Fox Valley.</p>
-    <div class="hero-btns">
-      <a href="tel:9208589957" class="btn-primary">📞 Call 920-858-9957</a>
-      <a href="/construction-fencing-green-bay" class="btn-outline">Construction Fencing</a>
+  <div class="hero-flex">
+    <div class="hero-content">
+      <h1>Temporary Fence Rental in Green Bay, WI</h1>
+      <p>Starting at $3 per linear foot. Fast delivery, professional installation, and flexible rental terms for construction sites and events across Green Bay, Appleton, and the Fox Valley.</p>
+      <div class="hero-btns">
+        <a href="tel:9208589957" class="btn-primary">📞 Call 920-858-9957</a>
+        <a href="/construction-fencing-green-bay" class="btn-outline">Construction Fencing</a>
+      </div>
+    </div>
+    <div class="hero-form-wrap contact-form-wrap">
+      <h2>Get a Free Quote</h2>
+      <p>Tell us about your project and we'll get back to you with pricing. Or call us directly at <a href="tel:9208589957">920-858-9957</a>.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name *</label>
+          <input type="text" id="name" placeholder="John Smith" required />
+        </div>
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" id="company" placeholder="Smith Construction LLC" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phone">Phone *</label>
+          <input type="tel" id="phone" placeholder="920-555-0100" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="john@example.com" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="message">Description of Project</label>
+        <textarea id="message" placeholder="Tell us your location, approximate footage needed, and how long you need the fencing..."></textarea>
+      </div>
+      <button class="form-submit" onclick="submitForm()">Send My Quote Request</button>
+      <div class="form-msg" id="form-msg"></div>
     </div>
   </div>
 </section>
@@ -189,41 +221,6 @@
       <a href="/shawano-temporary-fence-rental" class="area-tag">Shawano, WI</a>
     </div>
     <p style="margin-top:20px;">Not sure if we cover your location? <a href="tel:9208589957">Call 920-858-9957</a> — if we can reach you, we'll get you fenced.</p>
-  </div>
-</section>
-
-<section class="section section-alt">
-  <div class="container">
-    <div class="contact-form-wrap">
-      <h2>Get a Free Quote</h2>
-      <p>Tell us about your project and we'll get back to you with pricing. Or call us directly at <a href="tel:9208589957">920-858-9957</a>.</p>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="name">Name *</label>
-          <input type="text" id="name" placeholder="John Smith" required />
-        </div>
-        <div class="form-group">
-          <label for="company">Company</label>
-          <input type="text" id="company" placeholder="Smith Construction LLC" />
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="phone">Phone *</label>
-          <input type="tel" id="phone" placeholder="920-555-0100" required />
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" placeholder="john@example.com" />
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="message">Description of Project</label>
-        <textarea id="message" placeholder="Tell us your location, approximate footage needed, and how long you need the fencing..."></textarea>
-      </div>
-      <button class="form-submit" onclick="submitForm()">Send My Quote Request</button>
-      <div class="form-msg" id="form-msg"></div>
-    </div>
   </div>
 </section>
 

@@ -7,6 +7,21 @@
   <meta name="description" content="Temporary fence rental in Ashwaubenon, WI. Construction and event fencing near Lambeau Field and throughout the Green Bay metro. Same-day delivery available." />
   <link rel="canonical" href="https://www.temporaryfencerentalco.com/ashwaubenon-temporary-fence-rental" />
   <link rel="stylesheet" href="css/style.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1EVD7HL5K9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1EVD7HL5K9');
+
+    document.addEventListener('click', function(e) {
+      var telLink = e.target.closest('a[href^="tel:"]');
+      if (telLink) {
+        gtag('event', 'generate_lead', { method: 'phone_call' });
+      }
+    });
+  </script>
 </head>
 <body><script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Temporary Fence Rental Ashwaubenon, WI","serviceType":"Temporary fence rental","url":"https://www.temporaryfencerentalco.com/ashwaubenon-temporary-fence-rental","provider":{"@type":"LocalBusiness","@id":"https://www.temporaryfencerentalco.com/#business","name":"Temporary Fence Rental Co","telephone":"920-858-9957","url":"https://www.temporaryfencerentalco.com/"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How quickly can you deliver temporary fencing to Ashwaubenon?","acceptedAnswer":{"@type":"Answer","text":"We offer same-day and next-day temporary fence delivery throughout Ashwaubenon and the Green Bay metro area. Call 920-858-9957 for current availability."}},{"@type":"Question","name":"Can you handle fencing for events near Lambeau Field?","acceptedAnswer":{"@type":"Answer","text":"Yes. We've set up temporary fencing for gameday lots, tailgate areas, and event perimeters near major Ashwaubenon venues. Call ahead of your event date to lock in scheduling — this area books up fast on event weekends."}},{"@type":"Question","name":"Do you serve Green Bay and De Pere from Ashwaubenon too?","acceptedAnswer":{"@type":"Answer","text":"Yes. Ashwaubenon is part of our core Green Bay metro service area along with De Pere, Bellevue, and Howard. We regularly run multiple nearby sites on one delivery route."}}]}</script>
 
@@ -153,6 +168,7 @@ async function submitForm() {
     if (res.ok && data.success) {
       msg.className = "form-msg success";
       msg.textContent = "Thanks! We'll get back to you with a quote shortly. Or call us now at 920-858-9957.";
+      gtag('event', 'generate_lead', { method: 'contact_form' });
       ["name","company","phone","email","message"].forEach(id => document.getElementById(id).value = "");
     } else { throw new Error(data.error || "Unknown error"); }
   } catch(e) {

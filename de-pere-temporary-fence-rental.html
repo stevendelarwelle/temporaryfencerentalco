@@ -7,6 +7,21 @@
   <meta name="description" content="Temporary fence rental in De Pere, WI. Construction and event fencing delivered to De Pere, Green Bay, and Ashwaubenon. Same-day delivery available." />
   <link rel="canonical" href="https://www.temporaryfencerentalco.com/de-pere-temporary-fence-rental" />
   <link rel="stylesheet" href="css/style.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1EVD7HL5K9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1EVD7HL5K9');
+
+    document.addEventListener('click', function(e) {
+      var telLink = e.target.closest('a[href^="tel:"]');
+      if (telLink) {
+        gtag('event', 'generate_lead', { method: 'phone_call' });
+      }
+    });
+  </script>
 </head>
 <body><script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Temporary Fence Rental De Pere, WI","serviceType":"Temporary fence rental","url":"https://www.temporaryfencerentalco.com/de-pere-temporary-fence-rental","provider":{"@type":"LocalBusiness","@id":"https://www.temporaryfencerentalco.com/#business","name":"Temporary Fence Rental Co","telephone":"920-858-9957","url":"https://www.temporaryfencerentalco.com/"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How quickly can you deliver temporary fencing to De Pere?","acceptedAnswer":{"@type":"Answer","text":"We offer same-day and next-day temporary fence delivery throughout De Pere and the Green Bay metro area. Call 920-858-9957 for current availability."}},{"@type":"Question","name":"Do you service Green Bay and Ashwaubenon too?","acceptedAnswer":{"@type":"Answer","text":"Yes. De Pere sits right in the middle of our core Green Bay metro service area, along with Ashwaubenon, Bellevue, and Howard. We can often coordinate multiple nearby sites on one delivery run."}},{"@type":"Question","name":"Can you fence a riverfront or waterfront site in De Pere?","acceptedAnswer":{"@type":"Answer","text":"Yes. Our weighted-base panels don't require ground penetration, which makes them a good fit for riverfront lots and sites near the Fox River where digging isn't practical."}}]}</script>
 
@@ -153,6 +168,7 @@ async function submitForm() {
     if (res.ok && data.success) {
       msg.className = "form-msg success";
       msg.textContent = "Thanks! We'll get back to you with a quote shortly. Or call us now at 920-858-9957.";
+      gtag('event', 'generate_lead', { method: 'contact_form' });
       ["name","company","phone","email","message"].forEach(id => document.getElementById(id).value = "");
     } else { throw new Error(data.error || "Unknown error"); }
   } catch(e) {

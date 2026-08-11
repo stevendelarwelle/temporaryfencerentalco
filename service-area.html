@@ -7,6 +7,21 @@
   <meta name="description" content="Temporary fence rental service area: Green Bay, Appleton, Fox Valley, Manitowoc, Sheboygan, Door County and all of Northeast Wisconsin. See if we deliver to your location." />
   <link rel="canonical" href="https://www.temporaryfencerentalco.com/service-area" />
   <link rel="stylesheet" href="css/style.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1EVD7HL5K9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1EVD7HL5K9');
+
+    document.addEventListener('click', function(e) {
+      var telLink = e.target.closest('a[href^="tel:"]');
+      if (telLink) {
+        gtag('event', 'generate_lead', { method: 'phone_call' });
+      }
+    });
+  </script>
 </head>
 <body><script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Temporary Fence Rental Service Area — Northeast Wisconsin","serviceType":"Temporary fence rental","url":"https://www.temporaryfencerentalco.com/service-area","provider":{"@type":"LocalBusiness","@id":"https://www.temporaryfencerentalco.com/#business","name":"Temporary Fence Rental Co","telephone":"920-858-9957","url":"https://www.temporaryfencerentalco.com/"}}</script>
 
@@ -182,6 +197,7 @@ async function submitForm() {
     if (res.ok && data.success) {
       msg.className = "form-msg success";
       msg.textContent = "Thanks! We'll get back to you with a quote shortly. Or call us now at 920-858-9957.";
+      gtag('event', 'generate_lead', { method: 'contact_form' });
       ["name","company","phone","email","message"].forEach(id => document.getElementById(id).value = "");
     } else { throw new Error(data.error || "Unknown error"); }
   } catch(e) {

@@ -7,6 +7,21 @@
   <meta name="description" content="Temporary fence rental in Marinette, WI. Construction and event fencing delivered along the Green Bay shoreline near the Michigan border. Call to confirm availability." />
   <link rel="canonical" href="https://www.temporaryfencerentalco.com/marinette-temporary-fence-rental" />
   <link rel="stylesheet" href="css/style.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1EVD7HL5K9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1EVD7HL5K9');
+
+    document.addEventListener('click', function(e) {
+      var telLink = e.target.closest('a[href^="tel:"]');
+      if (telLink) {
+        gtag('event', 'generate_lead', { method: 'phone_call' });
+      }
+    });
+  </script>
 </head>
 <body><script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Temporary Fence Rental Marinette, WI","serviceType":"Temporary fence rental","url":"https://www.temporaryfencerentalco.com/marinette-temporary-fence-rental","provider":{"@type":"LocalBusiness","@id":"https://www.temporaryfencerentalco.com/#business","name":"Temporary Fence Rental Co","telephone":"920-858-9957","url":"https://www.temporaryfencerentalco.com/"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do you deliver temporary fencing to Marinette?","acceptedAnswer":{"@type":"Answer","text":"Yes. Marinette is part of our extended service area north of Green Bay. Call 920-858-9957 to confirm delivery timing and pricing for your specific location."}},{"@type":"Question","name":"How far in advance should I book for a Marinette job site?","acceptedAnswer":{"@type":"Answer","text":"Since Marinette is outside our core same-day zone, we recommend calling a few days ahead when possible so we can coordinate delivery with our regular routes."}},{"@type":"Question","name":"Do you also serve Oconto and Peshtigo from Marinette?","acceptedAnswer":{"@type":"Answer","text":"Yes. Marinette, Peshtigo, and Oconto are all part of the same northern bay shore route, so we can often coordinate multiple sites in the area."}}]}</script>
 
@@ -152,6 +167,7 @@ async function submitForm() {
     if (res.ok && data.success) {
       msg.className = "form-msg success";
       msg.textContent = "Thanks! We'll get back to you with a quote shortly. Or call us now at 920-858-9957.";
+      gtag('event', 'generate_lead', { method: 'contact_form' });
       ["name","company","phone","email","message"].forEach(id => document.getElementById(id).value = "");
     } else { throw new Error(data.error || "Unknown error"); }
   } catch(e) {

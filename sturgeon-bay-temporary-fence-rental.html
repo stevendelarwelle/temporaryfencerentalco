@@ -7,6 +7,21 @@
   <meta name="description" content="Temporary fence rental in Sturgeon Bay, WI. Construction and event fencing delivered to Sturgeon Bay and the gateway to Door County. Same-day delivery available." />
   <link rel="canonical" href="https://www.temporaryfencerentalco.com/sturgeon-bay-temporary-fence-rental" />
   <link rel="stylesheet" href="css/style.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1EVD7HL5K9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1EVD7HL5K9');
+
+    document.addEventListener('click', function(e) {
+      var telLink = e.target.closest('a[href^="tel:"]');
+      if (telLink) {
+        gtag('event', 'generate_lead', { method: 'phone_call' });
+      }
+    });
+  </script>
 </head>
 <body><script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Temporary Fence Rental Sturgeon Bay, WI","serviceType":"Temporary fence rental","url":"https://www.temporaryfencerentalco.com/sturgeon-bay-temporary-fence-rental","provider":{"@type":"LocalBusiness","@id":"https://www.temporaryfencerentalco.com/#business","name":"Temporary Fence Rental Co","telephone":"920-858-9957","url":"https://www.temporaryfencerentalco.com/"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How quickly can you deliver temporary fencing to Sturgeon Bay?","acceptedAnswer":{"@type":"Answer","text":"We offer same-day and next-day temporary fence delivery to Sturgeon Bay and the surrounding Door Peninsula. Call 920-858-9957 for current availability."}},{"@type":"Question","name":"Do you serve the rest of Door County from Sturgeon Bay?","acceptedAnswer":{"@type":"Answer","text":"Yes. Sturgeon Bay is our hub for the peninsula — see our full Door County service page for coverage details further north on the peninsula."}},{"@type":"Question","name":"Can you fence a site near the shipyards or marinas?","acceptedAnswer":{"@type":"Answer","text":"Yes. We've worked sites near Sturgeon Bay's shipyards and marinas. Our panels don't require ground penetration, which works well around docks, concrete pads, and gravel lots."}}]}</script>
 
@@ -151,6 +166,7 @@ async function submitForm() {
     if (res.ok && data.success) {
       msg.className = "form-msg success";
       msg.textContent = "Thanks! We'll get back to you with a quote shortly. Or call us now at 920-858-9957.";
+      gtag('event', 'generate_lead', { method: 'contact_form' });
       ["name","company","phone","email","message"].forEach(id => document.getElementById(id).value = "");
     } else { throw new Error(data.error || "Unknown error"); }
   } catch(e) {

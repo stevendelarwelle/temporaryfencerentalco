@@ -17,10 +17,27 @@
     gtag('config', 'G-1EVD7HL5K9');
     gtag('config', 'AW-18386341240');
 
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-18386341240/w5MlCMK1wuAcEPiapb9E',
+          'value': 1.0,
+          'currency': 'USD',
+          'event_callback': callback
+      });
+      return false;
+    }
+
     document.addEventListener('click', function(e) {
       var telLink = e.target.closest('a[href^="tel:"]');
       if (telLink) {
         gtag('event', 'generate_lead', { method: 'phone_call' });
+        e.preventDefault();
+        gtag_report_conversion(telLink.href);
       }
     });
   </script>
@@ -194,6 +211,7 @@ async function submitForm() {
       msg.className = "form-msg success";
       msg.textContent = "Thanks! We'll get back to you with a quote shortly. Or call us now at 920-858-9957.";
       gtag('event', 'generate_lead', { method: 'contact_form' });
+      gtag_report_conversion();
       ["name","company","phone","email","message"].forEach(id => document.getElementById(id).value = "");
     } else { throw new Error(data.error || "Unknown error"); }
   } catch(e) {
